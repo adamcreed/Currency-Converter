@@ -5,4 +5,8 @@ class Currency
     @amount = amount
     @currency_code = currency_code
   end
+
+  def ==(second_wallet)
+    @amount == second_wallet.amount and @currency_code == second_wallet.currency_code
+  end
 end
