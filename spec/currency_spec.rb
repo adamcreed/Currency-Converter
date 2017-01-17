@@ -2,6 +2,7 @@ require 'currency'
 
 describe 'Currency' do
   my_wallet = Currency.new(50, 'USD')
+  one_hundred_yen = Currency.new(100, 'JPY')
 
   describe '#new' do
     it 'Creates a new Currency object with an amount and a currency code.' do
@@ -40,9 +41,9 @@ describe 'Currency' do
     it 'Subtracts the amount attribute of the second currency object from the first' do
       rent = Currency.new(550, 'USD')
 
-      my_wallet -= rent
+      wallet_after_rent = my_wallet - rent
 
-      expect(my_wallet.amount).to eq -500
+      expect(wallet_after_rent.amount).to eq -500
     end
   end
 
@@ -51,10 +52,18 @@ describe 'Currency' do
        'codes are attempting to be added or subtracted.' do
 
       twenty_dollars = Currency.new(20, 'USD')
-      one_hundred_yen = Currency.new(100, 'JPY')
 
       expect{ twenty_dollars += one_hundred_yen }.to \
              raise_error(DifferentCurrencyCodeError)
     end
   end
+
+  describe '#*' do
+    it "Multiplies the currency's amount with a float or integer." do
+      five_hundred_fifty_yen = one_hundred_yen * 5.5
+
+      expect(five_hundred_fifty_yen.amount).to eq 550
+    end
+  end
+
 end

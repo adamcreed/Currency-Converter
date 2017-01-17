@@ -1,4 +1,4 @@
-require 'currency_errors'
+require_relative 'currency_errors'
 
 class Currency
   attr_accessor :amount, :currency_code
@@ -22,6 +22,10 @@ class Currency
     if same_currency_code?(@currency_code, second_currency.currency_code)
       Currency.new(@amount - second_currency.amount, @currency_code)
     end
+  end
+
+  def *(factor)
+    Currency.new(@amount * factor, @currency_code)
   end
 
   def same_currency_code?(first, second)
