@@ -3,9 +3,44 @@ require_relative 'currency_errors'
 class Currency
   attr_accessor :amount, :currency_code
 
-  def initialize(amount, currency_code)
-    @amount = amount
-    @currency_code = currency_code
+  def initialize(amount, currency_code = '')
+    if currency_code == ''
+      @amount = get_amount_without_symbol(amount)
+      @currency_code = check_first_char(amount)
+
+    else
+      @amount = amount
+      @currency_code = currency_code
+    end
+  end
+
+  def get_amount_without_symbol(amount)
+    amount[1..-1].to_i
+  end
+
+  def check_first_char(amount)
+    if amount[0] =~ /[$€¥]/
+      read_currency_symbol(amount)
+
+    elsif amount[0] =~ /[0-9]/
+      raise MissingCurrencyType
+
+    else
+      raise UnrecognizedCurrencyType
+    end
+  end
+
+  def read_currency_symbol(amount)
+    case amount[0]
+    when '$'
+      'USD'
+
+    when '€'
+      'EUR'
+
+    when '¥'
+      'JPY'
+    end
   end
 
   def ==(second_currency)

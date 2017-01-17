@@ -66,4 +66,15 @@ describe 'Currency' do
     end
   end
 
+  describe '#new' do
+    context 'When only one argument is passed' do
+      it 'Checks the first character of the amount for a currency symbol, ' \
+         'then uses that to determine the currency code' do
+           thirty_bucks = Currency.new('$30')
+
+           expect(thirty_bucks.amount).to eq 30
+           expect(thirty_bucks.currency_code).to eq 'USD'
+      end
+    end
+  end
 end
