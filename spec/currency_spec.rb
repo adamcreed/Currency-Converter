@@ -17,5 +17,13 @@ describe 'Currency' do
 
       expect(my_wallet == also_my_wallet).to eq true
     end
+    it 'Checks for inequality between two currency objects.' do
+      my_wallet = Currency.new(50, 'USD')
+      not_my_wallet = Currency.new(2000, 'USD')
+      also_not_my_wallet = Currency.new(50, 'JPY')
+
+      expect(my_wallet == not_my_wallet).to be false
+      expect(my_wallet == also_not_my_wallet).to be false
+    end
   end
 end
