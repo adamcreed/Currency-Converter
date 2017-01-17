@@ -37,4 +37,15 @@ describe 'Currency' do
       expect(my_wallet.amount).to eq 55
     end
   end
+
+  describe '#-' do
+    it 'Subtracts the amount attribute of the second currency object from the first' do
+      my_wallet = Currency.new(50, 'USD')
+      rent = Currency.new(550, 'USD')
+
+      my_wallet -= rent
+
+      expect(my_wallet.amount).to eq -500
+    end
+  end
 end

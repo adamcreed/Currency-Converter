@@ -13,4 +13,8 @@ class Currency
   def +(second_currency)
     Currency.new(@amount + second_currency.amount, @currency_code)
   end
+
+  def -(second_currency)
+    Currency.new(@amount - second_currency.amount, @currency_code)
+  end
 end
