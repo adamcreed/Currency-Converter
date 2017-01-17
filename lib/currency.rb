@@ -1,3 +1,5 @@
+require 'currency_errors'
+
 class Currency
   attr_accessor :amount, :currency_code
 
@@ -11,10 +13,24 @@ class Currency
   end
 
   def +(second_currency)
-    Currency.new(@amount + second_currency.amount, @currency_code)
+    if same_currency_code?(@currency_code, second_currency.currency_code)
+      Currency.new(@amount + second_currency.amount, @currency_code)
+    end
   end
 
   def -(second_currency)
-    Currency.new(@amount - second_currency.amount, @currency_code)
+    if same_currency_code?(@currency_code, second_currency.currency_code)
+      Currency.new(@amount - second_currency.amount, @currency_code)
+    end
   end
+
+  def same_currency_code?(first, second)
+    if first == second
+      true
+
+    else
+      raise DifferentCurrencyCodeError
+    end
+  end
+
 end
