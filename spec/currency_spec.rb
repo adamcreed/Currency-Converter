@@ -26,4 +26,15 @@ describe 'Currency' do
       expect(my_wallet == also_not_my_wallet).to be false
     end
   end
+
+  describe '#+' do
+    it 'Adds the amount attribute of two currency objects together' do
+      my_wallet = Currency.new(50, 'USD')
+      money_on_the_ground = Currency.new(5, 'USD')
+
+      my_wallet += money_on_the_ground
+
+      expect(my_wallet.amount).to eq 55
+    end
+  end
 end

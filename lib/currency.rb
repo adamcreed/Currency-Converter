@@ -6,7 +6,11 @@ class Currency
     @currency_code = currency_code
   end
 
-  def ==(second_wallet)
-    @amount == second_wallet.amount and @currency_code == second_wallet.currency_code
+  def ==(second_currency)
+    @amount == second_currency.amount and @currency_code == second_currency.currency_code
+  end
+
+  def +(second_currency)
+    Currency.new(@amount + second_currency.amount, @currency_code)
   end
 end
