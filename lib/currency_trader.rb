@@ -12,11 +12,17 @@ class CurrencyTrader
     best_exchange_key = @starting_currency
 
     @first_converter.rates[@starting_currency].each_key do |code|
-      if @first_converter.rates[@starting_currency][code] \
-          / @second_converter.rates[@starting_currency][code] > best_exchange
+      best_exchange_key = compare_rates(best_exchange, best_exchange_key, code)
+    end
 
-        best_exchange_key = code
-      end
+    best_exchange_key
+  end
+
+  def compare_rates(best_exchange, best_exchange_key, code)
+    if @first_converter.rates[@starting_currency][code] \
+        / @second_converter.rates[@starting_currency][code] > best_exchange
+
+      best_exchange_key = code
     end
 
     best_exchange_key
