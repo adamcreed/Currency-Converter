@@ -8,6 +8,8 @@ This repository consists of two classes: Currency and Currency Converter. The Cu
 
 ## Release History
 
+* 0.1.0
+    * Currencies can be added, subtracted, or multiplied, or converted to a different type. Only USD, EUR, and JPY are supported.
 * 0.0.1
     * Work in progress
 
