@@ -4,5 +4,8 @@ end
 class MissingCurrencyType < StandardError
 end
 
-class UnrecognizedCurrencyType < StandardError
+class UnrecognizedCurrencySymbol < StandardError
+end
+
+class UnknownCurrencyCodeError < StandardError
 end

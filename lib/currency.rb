@@ -26,7 +26,7 @@ class Currency
       raise MissingCurrencyType
 
     else
-      raise UnrecognizedCurrencyType
+      raise UnrecognizedCurrencySymbol
     end
   end
 

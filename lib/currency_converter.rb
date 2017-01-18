@@ -10,8 +10,18 @@ class CurrencyConverter
   end
 
   def convert(currency, target_currency)
+    unknown_currency_code?(currency, target_currency)
+
     Currency.new(currency.amount * \
             @rates[currency.currency_code][target_currency], target_currency)
+  end
+
+  def unknown_currency_code?(currency, target_currency)
+    if not(@rates.has_key?(currency.currency_code) \
+        and @rates.has_key?(target_currency))
+
+      raise UnknownCurrencyCodeError
+    end
   end
 
 end

@@ -39,7 +39,18 @@ describe 'CurrencyConverter' do
         expect(a_fistful_of_euros.amount).to eq 86.94
         expect(a_fistful_of_euros.currency_code).to eq 'EUR'
       end
-
     end
   end
+
+  describe '#unknown_currency_code?' do
+    it 'Raises a UnknownCurrencyCodeError when attempting to convert ' \
+       'to or from an unrecognized currency code' do
+
+      twenty_dollars = Currency.new(20, 'USD')
+
+      expect{ currency_converter.convert(twenty_dollars, 'GBP') }.to \
+             raise_error(UnknownCurrencyCodeError)
+    end
+  end
+
 end
