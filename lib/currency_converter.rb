@@ -9,8 +9,9 @@ class CurrencyConverter
              'JPY' => {'USD' => 0.00886, 'EUR' => 0.00828, 'JPY' => 1.0}}
   end
 
-end
+  def convert(currency, target_currency)
+    Currency.new(currency.amount * \
+            @rates[currency.currency_code][target_currency], target_currency)
+  end
 
-foo = CurrencyConverter.new
-bar = foo.rates
-p foo.rates.class
+end

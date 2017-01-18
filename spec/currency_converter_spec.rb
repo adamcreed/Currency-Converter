@@ -10,5 +10,15 @@ describe 'CurrencyConverter' do
     end
   end
 
+  describe '#convert' do
+    context 'When the source and target currency codes are the same' do
+      it 'Creates a currency object equal to the original object.' do
+
+        expect(currency_converter.convert(Currency.new(1, 'USD'), 'USD') \
+                == Currency.new(1, 'USD')).to eq true
+      end
+    end
+  end
+
 
 end
