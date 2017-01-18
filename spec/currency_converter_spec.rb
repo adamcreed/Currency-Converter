@@ -20,8 +20,8 @@ describe 'CurrencyConverter' do
     end
 
     context 'When converting to a different currency' do
-      it 'Creates a new currency object with an equivalent amount in ' \
-          'the new currency' do
+      it 'Creates a new JPY currency object with an equivalent amount to ' \
+          'the USD currency' do
 
         one_dollar = Currency.new(1, 'USD')
         one_dollar_in_yen = currency_converter.convert(one_dollar, 'JPY')
@@ -29,6 +29,17 @@ describe 'CurrencyConverter' do
         expect(one_dollar_in_yen.amount).to eq 112.911
         expect(one_dollar_in_yen.currency_code).to eq 'JPY'
       end
+
+      it 'Creates a new EUR currency object with an equivalent amount to ' \
+          'the JPY currency' do
+
+        a_fistful_of_yen = Currency.new(10500, 'JPY')
+        a_fistful_of_euros = currency_converter.convert(a_fistful_of_yen, 'EUR')
+
+        expect(a_fistful_of_euros.amount).to eq 86.94
+        expect(a_fistful_of_euros.currency_code).to eq 'EUR'
+      end
+
     end
   end
 end
