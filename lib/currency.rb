@@ -71,5 +71,4 @@ class Currency
       raise DifferentCurrencyCodeError
     end
   end
-
 end

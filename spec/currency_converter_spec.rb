@@ -52,5 +52,4 @@ describe 'CurrencyConverter' do
              raise_error(UnknownCurrencyCodeError)
     end
   end
-
 end

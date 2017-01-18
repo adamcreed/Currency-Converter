@@ -18,6 +18,7 @@ describe 'Currency' do
 
       expect(my_wallet == also_my_wallet).to eq true
     end
+
     it 'Checks for inequality between two currency objects.' do
       not_my_wallet = Currency.new(2000, 'USD')
       also_not_my_wallet = Currency.new(50, 'JPY')
@@ -29,6 +30,7 @@ describe 'Currency' do
 
   describe '#+' do
     it 'Adds the amount attribute of two currency objects together' do
+
       money_on_the_ground = Currency.new(5, 'USD')
 
       my_new_wallet = my_wallet + money_on_the_ground
@@ -39,6 +41,7 @@ describe 'Currency' do
 
   describe '#-' do
     it 'Subtracts the amount attribute of the second currency object from the first' do
+
       rent = Currency.new(550, 'USD')
 
       wallet_after_rent = my_wallet - rent
@@ -60,6 +63,7 @@ describe 'Currency' do
 
   describe '#*' do
     it "Multiplies the currency's amount with a float or integer." do
+
       five_hundred_fifty_yen = one_hundred_yen * 5.5
 
       expect(five_hundred_fifty_yen.amount).to eq 550
@@ -70,10 +74,11 @@ describe 'Currency' do
     context 'When only one argument is passed' do
       it 'Checks the first character of the amount for a currency symbol, ' \
          'then uses that to determine the currency code' do
-           thirty_bucks = Currency.new('$30')
 
-           expect(thirty_bucks.amount).to eq 30
-           expect(thirty_bucks.currency_code).to eq 'USD'
+        thirty_bucks = Currency.new('$30')
+
+        expect(thirty_bucks.amount).to eq 30
+        expect(thirty_bucks.currency_code).to eq 'USD'
       end
     end
   end

@@ -28,5 +28,4 @@ class CurrencyConverter
       raise UnknownCurrencyCodeError
     end
   end
-
 end
